@@ -459,6 +459,46 @@ def get_model_for_problem_formulation(problem_formulation_id):
 
 
         dike_model.outcomes = outcomes
+    # Disaggregate over locations for Gelderland:
+    elif problem_formulation_id == 7:
+        
+        outcomes = []
+        outcomes.append(
+            ScalarOutcome(
+                "Expected Evacuation Costs",
+                variable_name="Expected Evacuation Costs",
+                function=sum_over,
+                kind=direction,
+            )
+        )
+
+        outcomes.append(
+            ScalarOutcome(
+                "Expected Annual Damage",
+                variable_name=[
+                    "A.1_Expected Annual Damage",
+                    "A.2_Expected Annual Damage",
+                    "A.3_Expected Annual Damage"
+                ],
+                function=sum_over,
+                kind=direction,
+            )
+        )
+        outcomes.append(
+            ScalarOutcome(
+                "Expected Number of Deaths",
+                variable_name=[
+                    "A.1_Expected Number of Deaths",
+                    "A.2_Expected Number of Deaths",
+                    "A.3_Expected Number of Deaths"
+                ],
+                function=sum_over,
+                kind=direction,
+            )
+        )
+
+
+        dike_model.outcomes = outcomes
 
     else:
         raise TypeError("unknown identifier")
