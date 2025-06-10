@@ -463,17 +463,8 @@ def get_model_for_problem_formulation(problem_formulation_id):
     elif problem_formulation_id == 7:
         
         outcomes = []
-        outcomes.append(
-            ScalarOutcome(
-                "Expected Evacuation Costs",
-                variable_name="Expected Evacuation Costs",
-                function=sum_over,
-                kind=direction,
-            )
-        )
 
-        outcomes.append(
-            ScalarOutcome(
+        outcomes.append(ScalarOutcome(
                 "Expected Annual Damage",
                 variable_name=[
                     "A.1_Expected Annual Damage",
@@ -482,10 +473,36 @@ def get_model_for_problem_formulation(problem_formulation_id):
                 ],
                 function=sum_over,
                 kind=direction,
-            )
-        )
+            ))
+        outcomes.append(ScalarOutcome(
+                "Dike Investment Costs",
+                variable_name=[
+                    "A.1_Dike Investment Costs",
+                    "A.2_Dike Investment Costs",
+                    "A.3_Dike Investment Costs"
+                ],
+                function=sum_over,
+                kind=direction,
+            ))
         outcomes.append(
             ScalarOutcome(
+                "RfR Total Costs",
+                variable_name="RfR Total Costs",
+                function=sum_over,
+                kind=direction,
+            )
+        )
+        outcomes.append(ScalarOutcome(
+                "Evacuation Costs",
+                variable_name=[
+                    "A.1_Evacuation Costs",
+                    "A.2_Evacuation Costs",
+                    "A.3_Evacuation Costs"
+                ],
+                function=sum_over,
+                kind=direction,
+            ))
+        outcomes.append(ScalarOutcome(
                 "Expected Number of Deaths",
                 variable_name=[
                     "A.1_Expected Number of Deaths",
@@ -494,9 +511,18 @@ def get_model_for_problem_formulation(problem_formulation_id):
                 ],
                 function=sum_over,
                 kind=direction,
-            )
-        )
+            ))
+        
 
+
+        # outcomes.append(
+        #     ScalarOutcome(
+        #         "Expected Evacuation Costs",
+        #         variable_name="Expected Evacuation Costs",
+        #         function=sum_over,
+        #         kind=direction,
+        #     )
+        # )
 
         dike_model.outcomes = outcomes
 
@@ -507,4 +533,4 @@ def get_model_for_problem_formulation(problem_formulation_id):
 
 
 if __name__ == "__main__":
-    get_model_for_problem_formulation(3)
+    get_model_for_problem_formulation(7)
