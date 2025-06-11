@@ -479,7 +479,9 @@ def get_model_for_problem_formulation(problem_formulation_id):
                 variable_name=[
                     "A.1_Dike Investment Costs",
                     "A.2_Dike Investment Costs",
-                    "A.3_Dike Investment Costs"
+                    "A.3_Dike Investment Costs",
+                    "A.4_Dike Investment Costs",
+                    "A.5_Dike Investment Costs"
                 ],
                 function=sum_over,
                 kind=direction,
